@@ -6,7 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7A505F112D27AFEA0098E1B5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A505F102D27AFEA0098E1B5 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		7A505F142D27B0250098E1B5 /* Trainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A505F122D27B0250098E1B5 /* Trainer.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		7A505F102D27AFEA0098E1B5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		7A505F132D27B0250098E1B5 /* Trainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Trainer.xcdatamodel; sourceTree = "<group>"; };
 		7A83E9392D240C140017C314 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -36,16 +43,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A505F112D27AFEA0098E1B5 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A505F0F2D27AFEA0098E1B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A505F102D27AFEA0098E1B5 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7A83E9302D240C140017C314 = {
 			isa = PBXGroup;
 			children = (
+				7A505F122D27B0250098E1B5 /* Trainer.xcdatamodeld */,
 				7A83E93B2D240C140017C314 /* Pokedex */,
+				7A505F0F2D27AFEA0098E1B5 /* Frameworks */,
 				7A83E93A2D240C140017C314 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -132,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A505F142D27B0250098E1B5 /* Trainer.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +169,6 @@
 				INFOPLIST_FILE = Pokedex/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -178,7 +196,6 @@
 				INFOPLIST_FILE = Pokedex/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -335,6 +352,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7A505F122D27B0250098E1B5 /* Trainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7A505F132D27B0250098E1B5 /* Trainer.xcdatamodel */,
+			);
+			currentVersion = 7A505F132D27B0250098E1B5 /* Trainer.xcdatamodel */;
+			path = Trainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7A83E9312D240C140017C314 /* Project object */;
 }
