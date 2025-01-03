@@ -42,10 +42,11 @@ final class CoreDataStack {
         saveContext()
     }
     
-    func unlockPokemon(trainer: String, id: Int) {
-        let fetchRequest: NSFetchRequest<Trainer> = NSFetchRequest()
-        
-        
+    func unlockPokemon(trainer: Trainer, id: Int) {
+        let pokemon = UnlockedPokemon(context: context)
+        pokemon.id = Int16(id)
+        trainer.addToUnlockedPokemon(pokemon)
+        saveContext()
     }
     
 }
