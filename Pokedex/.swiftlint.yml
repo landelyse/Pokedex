@@ -1,0 +1,3 @@
+excluded:
+  - Pokedex/AppDelegate.swift
+  - Pokedex/SceneDelegate.swift

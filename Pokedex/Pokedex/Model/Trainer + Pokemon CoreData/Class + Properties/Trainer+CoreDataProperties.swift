@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension Trainer {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Trainer> {
@@ -38,6 +37,6 @@ extension Trainer {
 
 }
 
-extension Trainer : Identifiable {
+extension Trainer: Identifiable {
 
 }

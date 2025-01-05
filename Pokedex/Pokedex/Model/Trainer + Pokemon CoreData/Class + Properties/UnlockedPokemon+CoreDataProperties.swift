@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension UnlockedPokemon {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<UnlockedPokemon> {
@@ -21,6 +20,6 @@ extension UnlockedPokemon {
 
 }
 
-extension UnlockedPokemon : Identifiable {
+extension UnlockedPokemon: Identifiable {
 
 }
