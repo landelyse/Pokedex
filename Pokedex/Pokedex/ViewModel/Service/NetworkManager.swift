@@ -52,9 +52,11 @@ final class NetworkManager {
                     single(.failure(AppError.networkError(.failToDecoding)))
                 }
             }
+            
+            task.resume()
 
             return Disposables.create {
-
+                task.cancel()
             }
         }
     }
