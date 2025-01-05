@@ -48,7 +48,7 @@ final class CoreDataStack {
         trainer.addToUnlockedPokemon(pokemon)
         saveContext()
     }
-    
+
     func fetchTrainer() -> [Trainer] {
         let fetchRequest: NSFetchRequest<Trainer> = Trainer.fetchRequest()
         fetchRequest.sortDescriptors = [
