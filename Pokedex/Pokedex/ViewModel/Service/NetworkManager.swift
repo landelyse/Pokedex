@@ -16,7 +16,7 @@ final class NetworkManager {
     private let baseURL: String = "https://pokeapi.co/api/v2/pokemon/ "
     private let successRange: Range = (200..<300)
 
-    func fetchData<T: Decodable>(id: Int) -> Single<T> {
+    func fetchData<T: Decodable>(id: Int, as: T.Type) -> Single<T> {
         return Single.create { [weak self] single in
             guard let self = self else {
                 single(.failure(AppError.networkError(.unknown)))
