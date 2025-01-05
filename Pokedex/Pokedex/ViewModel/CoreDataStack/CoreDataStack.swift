@@ -48,5 +48,18 @@ final class CoreDataStack {
         trainer.addToUnlockedPokemon(pokemon)
         saveContext()
     }
+    
+    func fetchTrainer() -> [Trainer] {
+        let fetchRequest: NSFetchRequest<Trainer> = Trainer.fetchRequest()
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(keyPath: \Trainer.name, ascending: true)
+        ]
+        do {
+            return try context.fetch(fetchRequest)
+        } catch {
+            print("failed to fetch")
+            return []
+        }
+    }
 
 }

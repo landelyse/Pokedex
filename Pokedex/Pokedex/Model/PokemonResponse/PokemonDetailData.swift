@@ -5,6 +5,7 @@
 //  Created by 박진홍 on 1/3/25.
 //
 
+// pokemon의 디테일 데이터
 struct PokemonDetailData: Decodable {
     let id: Int
     let name: String
