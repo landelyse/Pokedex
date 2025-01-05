@@ -7,7 +7,7 @@
 
 enum AppError: Error {
     case networkError(NetworkError)
-    
+
     enum NetworkError {
         case buildURL
         case unknown
