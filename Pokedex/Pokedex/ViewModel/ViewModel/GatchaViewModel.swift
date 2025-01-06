@@ -22,27 +22,19 @@ class GachaViewModel {
     }
 
     private func setupTrainer() {
-        let trainers = CoreDataStack.shared.fetchTrainer()
-
-        if let existhingTrainer = trainers.first { // 로그인 기능 미구현으로 가장 첫 번째 트레이너만 가져오는 상태.
-            trainer = existhingTrainer
-        } else {
-            // 없을 시 생성
-            CoreDataStack.shared.addTrainer(name: "Green")
-
-        }
+        trainer = TrainerManager.shared.getTrainer(byName: TrainerManager.shared.trainerName)
     }
 
     func gachaRandomPokemon() {
         let randomID: Int = Int.random(in: 1...151)
-        NetworkManager.shared.fetchData(id: randomID, as: PokemonDetailData.self)
+        NetworkManager.shared.fetchData(url: BaseURL.pokemon(id: randomID).url, as: PokemonDetailData.self)
             .subscribe(onSuccess: { [weak self] pokemon in
                 guard let self = self else { return }
 
                 CoreDataStack.shared.unlockPokemon(trainer: self.trainer, id: randomID)
                 self.unlockedPokemon.onNext(pokemon.id)// 데이터 전달
             }, onFailure: { error in
-                print("failed to fetch: \(error)")
+                print("failed to fetch: \(error), id: \(randomID)")
             })
             .disposed(by: disposeBag)
     }

@@ -2,7 +2,7 @@
 //  UnlockedPokemon+CoreDataProperties.swift
 //  Pokedex
 //
-//  Created by 박진홍 on 1/3/25.
+//  Created by 박진홍 on 1/6/25.
 //
 //
 

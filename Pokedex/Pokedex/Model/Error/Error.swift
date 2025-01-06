@@ -11,7 +11,7 @@ enum AppError: Error {
     enum NetworkError {
         case buildURL
         case unknown
-        case invalidResponse
+        case invalidResponse(Int)
         case failToDecoding
     }
 }

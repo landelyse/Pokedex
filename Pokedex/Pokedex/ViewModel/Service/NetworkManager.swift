@@ -13,17 +13,16 @@ final class NetworkManager {
     static let shared = NetworkManager()
     private init() {}
 
-    private let baseURL: String = "https://pokeapi.co/api/v2/pokemon/ "
     private let successRange: Range = (200..<300)
 
-    func fetchData<T: Decodable>(id: Int, as: T.Type) -> Single<T> {
+    func fetchData<T: Decodable>(url: URL?, as: T.Type) -> Single<T> {
         return Single.create { [weak self] single in
             guard let self = self else {
                 single(.failure(AppError.networkError(.unknown)))
                 return Disposables.create()
             }
 
-            guard let url = URL(string: baseURL + String(id)) else {
+            guard let url = url else {
                 single(.failure(AppError.networkError(.buildURL)))
                 return Disposables.create()
             }
@@ -36,9 +35,12 @@ final class NetworkManager {
                     return
                 }
 
-                guard let response = response as? HTTPURLResponse,
-                      self.successRange.contains(response.statusCode) else {
-                    single(.failure(AppError.networkError(.invalidResponse)))
+                let response = response as? HTTPURLResponse
+
+                guard let unwrappedResponse = response,
+                      self.successRange.contains(unwrappedResponse.statusCode) else {
+                    print("request url: \(url)")
+                    single(.failure(AppError.networkError(.invalidResponse(response?.statusCode ?? -1))))
                     return
                 }
 
