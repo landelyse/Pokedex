@@ -14,7 +14,7 @@ final class GachaViewController: UIViewController {
     private let disposeBag: DisposeBag = DisposeBag()
     private let gachaView: GachaView = GachaView()
 
-    var pokemonListViewModel: PokemonListViewModel?
+    var pokemonListViewModel: PokemonListViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,9 @@ final class GachaViewController: UIViewController {
             .bind { [weak self ] in
                 let newTrainer = self?.gachaView.trainerTextField.text ?? "Red"
                 self?.viewModel.updateTrainer(with: newTrainer)
+                self?.pokemonListViewModel?.reloadData()
                 self?.pokemonListViewModel?.reloadTrigger.onNext(())
+                print("change button tabbed: \(newTrainer)")
             }
             .disposed(by: disposeBag
             )

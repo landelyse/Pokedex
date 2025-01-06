@@ -32,7 +32,7 @@ class GachaViewModel {
 
     func gachaRandomPokemon() {
         let randomID: Int = Int.random(in: 1...151)
-        let name = trainerName.value
+        
         NetworkManager.shared.fetchData(url: BaseURL.pokemon(id: randomID).url, as: PokemonDetailData.self)
             .subscribe(onSuccess: { [weak self] pokemon in
                 guard let self = self else { return }

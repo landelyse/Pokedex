@@ -30,10 +30,12 @@ final class PokemonListViewModel {
         let trainer = TrainerManager.shared.getTrainer(byName: trainerName)
         let list = CoreDataStack.shared.fetchPokemonList(trainer: trainer)
         pokemonList.onNext(list)
+        print("trainer: \(String(describing: trainer.name))")
     }
 
     func reloadData() {
         fetchUnlockedPokemon()
+        print("reload pokemon list")
     }
 
     func detailViewModel(for pokemon: UnlockedPokemon) -> PokemonDetailViewModel {

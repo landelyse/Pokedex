@@ -63,6 +63,7 @@ final class PokemonListViewController: UIViewController {
         // 1) 도감 리스트를 컬렉션뷰에 바인딩
         // 간단히 RxSwift의 items(cellIdentifier:) 방식 사용
         viewModel.pokemonList
+            .observe(on: MainScheduler.instance)
             .bind(to: collectionView.rx.items(
                 cellIdentifier: PokemonCell.identifier,
                 cellType: PokemonCell.self)
