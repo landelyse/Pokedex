@@ -10,11 +10,11 @@ final class TrainerManager {
     private var trainerName: String = "Red"
 
     private init() {}
-    
+
     func setTrainer(for trainer: String) {
         self.trainerName = trainer
     }
-    
+
     func getTrainerName() -> String {
         return trainerName
     }

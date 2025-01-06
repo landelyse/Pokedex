@@ -50,11 +50,11 @@ final class CoreDataStack {
     }
 
     func fetchPokemonList(trainer: Trainer) -> [UnlockedPokemon] {
-        
+
             if let pokemonList = trainer.unlockedPokemon as? Set<UnlockedPokemon> {
                 return Array(pokemonList).sorted { $0.id < $1.id }
             }
-        
+
         return []
     }
 

@@ -24,7 +24,7 @@ final class GachaView: UIView {
         button.layer.cornerRadius = 15
         return button
     }()
-    
+
     let changeTrainerButton: UIButton = {
            let button = UIButton(type: .system)
            button.setTitle("Change", for: .normal)
@@ -62,7 +62,7 @@ final class GachaView: UIView {
     }
 
     private func setupUI() {
-        [trainerTextField,changeTrainerButton,gachaButton, nameLable, pokemonImage].forEach { view in
+        [trainerTextField, changeTrainerButton, gachaButton, nameLable, pokemonImage].forEach { view in
             addSubview(view)
             view.translatesAutoresizingMaskIntoConstraints = false
         }

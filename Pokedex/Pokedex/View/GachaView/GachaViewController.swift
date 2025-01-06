@@ -41,7 +41,7 @@ final class GachaViewController: UIViewController {
                 self?.pokemonListViewModel?.reloadTrigger.onNext(())
             }
             .disposed(by: disposeBag)
-        
+
         // 포켓몬 뽑기
         viewModel.unlockedPokemon
             .observe(on: MainScheduler.instance)// ui >> main thread

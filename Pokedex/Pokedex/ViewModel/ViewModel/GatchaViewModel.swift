@@ -16,7 +16,7 @@ class GachaViewModel {
 
     // TODO: trainer 로그인 기능으로 여러 트레이너가 사용할 수 있게 변경하기
     private var trainer: Trainer!
-    
+
     init() {
         setupTrainer()
     }
@@ -24,7 +24,7 @@ class GachaViewModel {
     private func setupTrainer() {
         trainer = TrainerManager.shared.getTrainer(byName: TrainerManager.shared.getTrainerName())
     }
-    
+
     func updateTrainer(with trainerName: String) {
         TrainerManager.shared.setTrainer(for: trainerName)
         trainer = TrainerManager.shared.getTrainer(byName: trainerName)
@@ -32,7 +32,7 @@ class GachaViewModel {
 
     func gachaRandomPokemon() {
         let randomID: Int = Int.random(in: 1...151)
-        
+
         NetworkManager.shared.fetchData(url: BaseURL.pokemon(id: randomID).url, as: PokemonDetailData.self)
             .subscribe(onSuccess: { [weak self] pokemon in
                 guard let self = self else { return }
