@@ -23,13 +23,24 @@ final class GachaViewController: UIViewController {
     }
 
     private func bindViewModel() {
+        // 트레이너 변경 버튼
+        gachaView.changeTrainerButton.rx.tap
+            .bind { [weak self ] in
+                let newTrainer = self?.gachaView.trainerTextField.text ?? "Red"
+                self?.viewModel.updateTrainer(with: newTrainer)
+                self?.pokemonListViewModel?.reloadTrigger.onNext(())
+            }
+            .disposed(by: disposeBag
+            )
+        // 뽑기 버튼
         gachaView.gachaButton.rx.tap
             .bind { [weak self] in
                 self?.viewModel.gachaRandomPokemon()
                 self?.pokemonListViewModel?.reloadTrigger.onNext(())
             }
             .disposed(by: disposeBag)
-
+        
+        // 포켓몬 뽑기
         viewModel.unlockedPokemon
             .observe(on: MainScheduler.instance)// ui >> main thread
             .subscribe(onNext: { [weak self] id in

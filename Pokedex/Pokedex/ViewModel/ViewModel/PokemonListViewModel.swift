@@ -26,7 +26,7 @@ final class PokemonListViewModel {
     }
 
     private func fetchUnlockedPokemon() {
-        let trainerName = TrainerManager.shared.trainerName
+        let trainerName = TrainerManager.shared.getTrainerName()
         let trainer = TrainerManager.shared.getTrainer(byName: trainerName)
         let list = CoreDataStack.shared.fetchPokemonList(trainer: trainer)
         pokemonList.onNext(list)

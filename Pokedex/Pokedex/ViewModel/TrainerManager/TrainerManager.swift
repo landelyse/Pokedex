@@ -7,9 +7,17 @@
 
 final class TrainerManager {
     static let shared = TrainerManager()
-    let trainerName: String = "Red"
+    private var trainerName: String = "Red"
 
     private init() {}
+    
+    func setTrainer(for trainer: String) {
+        self.trainerName = trainer
+    }
+    
+    func getTrainerName() -> String {
+        return trainerName
+    }
 
     func getTrainer(byName trainer: String) -> Trainer {
         if let trainer = CoreDataStack.shared.fetchTrainer(byName: trainer) {
