@@ -49,7 +49,30 @@ final class CoreDataStack {
         saveContext()
     }
 
-    func fetchTrainer() -> [Trainer] {
+    func fetchPokemonList(trainer: Trainer) -> [UnlockedPokemon] {
+        if let trainer = fetchTrainers().first {
+            if let pokemonList = trainer.unlockedPokemon as? Set<UnlockedPokemon> {
+                return Array(pokemonList).sorted { $0.id < $1.id }
+            }
+        }
+        return []
+    }
+
+    // predicate를 사용하는 것이 firstIndex / first(where:)보다 성능상 조금 더 이점
+    func fetchTrainer(byName trainer: String) -> Trainer? {
+        let fetchRequest: NSFetchRequest<Trainer> = Trainer.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@", trainer)
+        fetchRequest.fetchLimit = 1
+        do {
+            let trainers = try context.fetch(fetchRequest)
+            return trainers.first
+        } catch {
+            return nil
+        }
+
+    }
+
+    func fetchTrainers() -> [Trainer] {
         let fetchRequest: NSFetchRequest<Trainer> = Trainer.fetchRequest()
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(keyPath: \Trainer.name, ascending: true)
@@ -61,5 +84,4 @@ final class CoreDataStack {
             return []
         }
     }
-
 }
